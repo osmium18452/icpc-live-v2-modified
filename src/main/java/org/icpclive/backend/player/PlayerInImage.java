@@ -37,7 +37,7 @@ public class PlayerInImage {
     private boolean ready;
 
     public PlayerInImage(int width, int height, JComponent frame, String media) {
-        this(width, height, frame, media, true);
+        this(width, height, frame, media, false);
     }
 
     public PlayerInImage(int width, int height, JComponent frame, String media, boolean repeat) {
@@ -55,17 +55,21 @@ public class PlayerInImage {
         System.err.println(media);
 
         this.media = media;
+        System.err.format("icon && width: %d\n",width);
         if (width == -1) {
+            System.err.println("some code has been executed.**********************");
             MediaPlayerFactory factory = new MediaPlayerFactory(new String[0]);
             EmbeddedMediaPlayer player = factory.newEmbeddedMediaPlayer();
             player.setVolume(0);
             player.playMedia(media);
-            while (player.getVideoDimension() == null) {}
-            width = (int)player.getVideoDimension().getWidth();
-            height = (int)player.getVideoDimension().getHeight();
+            while (player.getVideoDimension() == null) {
+            }
+            width = (int) player.getVideoDimension().getWidth();
+            height = (int) player.getVideoDimension().getHeight();
             player.stop();
         }
 
+        System.err.format("graphicsenvironment width:%d,height:%d\n",width,height);
         image = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration().createCompatibleImage(width, height);
         image.setAccelerationPriority(1.0f);
 
@@ -126,9 +130,10 @@ public class PlayerInImage {
     }
 
     Random rnd = new Random();
+
     public boolean isBlack() {
         if (ready) return false;
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 40; i++) {
             int rgb = image.getRGB(rnd.nextInt(image.getWidth()),
                     rnd.nextInt(image.getHeight()));
             if ((rgb & 0xffffff) != 0) {

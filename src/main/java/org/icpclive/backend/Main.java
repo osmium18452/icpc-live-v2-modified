@@ -7,6 +7,7 @@ import org.icpclive.backend.player.MemoryFilePlayer;
 import org.icpclive.backend.player.generator.ScreenGenerator;
 import org.icpclive.backend.player.generator.ScreenGeneratorGL;
 import org.icpclive.backend.player.widgets.*;
+import org.lwjgl.system.CallbackI;
 
 import javax.imageio.ImageIO;
 import java.io.File;
@@ -42,6 +43,7 @@ public class Main {
         int width = Integer.parseInt(properties.getProperty("width", "1280"));
         int height = Integer.parseInt(properties.getProperty("height", "720"));
         int frameRate = Integer.parseInt(properties.getProperty("rate", "25"));
+        System.err.format("main width:%d, height: %d\n",width,height);
 
         String outputMode = properties.getProperty("output.mode", "window");
 
@@ -58,6 +60,7 @@ public class Main {
         long timePerson = Long.parseLong(properties.getProperty("person.time"));
 
         generator.addWidget(new NewTeamWidget(500, false));
+        System.err.println("%%% added new team widget");
 //                Integer.parseInt(properties.getProperty("sleep.time"))
 //        ));
 
@@ -66,18 +69,24 @@ public class Main {
         StandingsWidget standingsWidget = new StandingsWidget(519, 825, plateHeight, updateWait);
         standingsWidget.alignBottom(bottomY);
         generator.addWidget(standingsWidget);
+        System.err.println("%%% added standings widget");
+        
 
         BigStandingsWidget bigStandingsWidget = new BigStandingsWidget(588, 69,
                 1295, plateHeight, updateWait, 22, true);
         bigStandingsWidget.alignBottom(bottomY);
         generator.addWidget(bigStandingsWidget);
+        System.err.println("%%% added big standings widget");
+        
 
         generator.addWidget(new StatisticsWidget(
                 588, bottomY, plateHeight, 1295, updateWait
         ));
 
         generator.addWidget(new DoublePersonWidget(updateWait, timePerson));
+        System.err.println("%%% added double person widget");
         generator.addWidget(new AdvertisementWidget(updateWait, timeAdvertisement));
+        System.err.println("%%% added ad widget");
 
 //        TeamStatsWidget widget = new TeamStatsWidget(updateWait, Integer.parseInt(properties.getProperty("sleep.time")));
 //        generator.addWidget(widget);
@@ -90,12 +99,14 @@ public class Main {
                 80,
                 578, bottomY
         ));
+        System.err.println("%%% added pillow widget");
 
         generator.addWidget(new WordStatisticsWidget(updateWait,
                 600,
                 400,
                 200
         ));
+        System.err.println("%%% added word statistics widget");
 
         generator.addWidget(new FactWidget(updateWait,
                 Widget.BASE_WIDTH - 500,
@@ -103,6 +114,7 @@ public class Main {
                 450,
                 50
         ));
+        System.err.println("%%% added fact widget");
 
         generator.addWidget(new PictureWidget(updateWait, 588, 50,
                 1295, 1007 - 50, 60));
@@ -130,11 +142,13 @@ public class Main {
         boolean showVerdict = Boolean.parseBoolean(properties.getProperty("queue.show.verdict", "true"));
         generator.addWidget(new QueueWidget(30, bottomY, plateHeight, 100, showVerdict));
 
+        System.err.println("$$$all widgets added");
         if (outputMode.equals("file")) {
             String filename = properties.getProperty("output.file", "c:\\work\\image.bin");
             new MemoryFilePlayer(filename, generator, frameRate);
         } else {
             new FramePlayer("Main", generator, frameRate);
         }
+        System.err.println("$$$main function exectued");
     }
 }

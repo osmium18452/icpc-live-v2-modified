@@ -179,8 +179,11 @@ public class NewTeamWidget extends Widget {
                 System.err.println("3 Load video: " + TeamUrls.getUrl(team, infoType));
                 PlayerInImage video = null;
                 try {
-                    System.err.format("3 video height:%d, width %d",height,width);
+                    System.err.format("3 video height:%d, width %d\n", height, width);
                     video = new PlayerInImage(width, height, null, TeamUrls.getUrl(team, infoType));
+                    System.err.println("teams url: "+TeamUrls.getUrl(team, infoType));
+                    System.err.println("3 video " + infoType);
+                    System.err.println("3 video loaded");
                     ;
                 } catch (Exception e) {
                     System.err.println("3 video error. &&&");

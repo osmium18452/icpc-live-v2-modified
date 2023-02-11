@@ -11,6 +11,7 @@ import org.icpclive.backend.player.widgets.stylesheets.QueueStylesheet;
 import org.icpclive.events.PCMS.PCMSTeamInfo;
 import org.icpclive.events.TeamInfo;
 import org.icpclive.events.WF.json.WFTeamInfo;
+import org.lwjgl.system.CallbackI;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -89,6 +90,7 @@ public class TeamStatsWidget extends Widget {
                     }
                 }
             } catch (IOException e) {
+                System.err.println("this caused the json err");
                 e.printStackTrace();
             }
 
