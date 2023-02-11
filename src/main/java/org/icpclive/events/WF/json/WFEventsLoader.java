@@ -279,7 +279,7 @@ public class WFEventsLoader extends EventsLoader {
     }
 
     public long parseTime(String time) {
-        ZonedDateTime zdt = ZonedDateTime.parse(time + ":00", DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+        ZonedDateTime zdt = ZonedDateTime.parse(time);
 //        ZonedDateTime zdt = ZonedDateTime.parse(time, DateTimeFormatter.ISO_OFFSET_DATE_TIME);
         return zdt.toInstant().toEpochMilli();
 //        LocalDateTime ldt = LocalDateTime.parse(time + ":00", DateTimeFormatter.ISO_OFFSET_DATE_TIME);

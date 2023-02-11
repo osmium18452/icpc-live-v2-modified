@@ -20,6 +20,7 @@ public class MemoryFilePlayer extends Player {
         super(generator);
         width = generator.getWidth();
         height = generator.getHeight();
+        System.out.format("hello_debugging***, height:%d width:%d\n",height,width);
 
         length = width * height * 4;
         try {

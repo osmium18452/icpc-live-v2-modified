@@ -176,12 +176,14 @@ public class NewTeamWidget extends Widget {
                 mainVideo = null;
                 stats = new TeamStatsWidget(team);
             } else {
-                System.err.println("Load video: " + TeamUrls.getUrl(team, infoType));
+                System.err.println("3 Load video: " + TeamUrls.getUrl(team, infoType));
                 PlayerInImage video = null;
                 try {
+                    System.err.format("3 video height:%d, width %d",height,width);
                     video = new PlayerInImage(width, height, null, TeamUrls.getUrl(team, infoType));
                     ;
                 } catch (Exception e) {
+                    System.err.println("3 video error. &&&");
                     e.printStackTrace();
                 }
                 mainVideo = video;

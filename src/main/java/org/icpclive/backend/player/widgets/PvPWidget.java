@@ -168,7 +168,7 @@ public class PvPWidget extends Widget {
 
             setFont(Font.decode(MAIN_FONT + "-" + (int) (TEAM_PANE_HEIGHT * 0.7)));
 
-            System.err.println("Load video: " + TeamUrls.getUrl(team, MAIN_VIDEO));
+            System.err.println("1 Load video: " + TeamUrls.getUrl(team, MAIN_VIDEO));
             PlayerInImage video = null;
             try {
                 video = new PlayerInImage(mainWidth, mainHeight, null, TeamUrls.getUrl(team, MAIN_VIDEO));
@@ -176,7 +176,7 @@ public class PvPWidget extends Widget {
                 e.printStackTrace();
             }
             mainVideo = video;
-            System.err.println("Load video: " + TeamUrls.getUrl(team, SECOND_VIDEO));
+            System.err.println("2 Load video: " + TeamUrls.getUrl(team, SECOND_VIDEO));
             try {
                 video = new PlayerInImage(mainWidth, mainHeight, null, TeamUrls.getUrl(team, SECOND_VIDEO));
             } catch (Exception e) {
